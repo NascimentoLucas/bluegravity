@@ -46,10 +46,10 @@ namespace Bluegravity.Game.Player.Clothes
 
         public void SetClothe(PlayerClotheSO so)
         {
-            if (so.Layer < 0) return;
-            if (so.Layer > MaxLayer - 1) return;
+            if (so.Layer - 1 < 0) return;
+            if (so.Layer - 1 > MaxLayer - 1) return;
 
-            _renderers[so.Layer].SetClothe(so, _animation.Collum, _animation.Row);
+            _renderers[so.Layer - 1].SetClothe(so, _animation.Collum, _animation.Row);
         }
     }
 

@@ -20,7 +20,7 @@ namespace Bluegravity.Game.Player.Clothes
         internal void SetClothe(PlayerClotheSO so, int collum, int row)
         {
             _animation = new AnimationSprites(so.Texture, collum, row);
-            _render.renderingLayerMask = so.Layer;
+            _render.sortingOrder = so.Layer;
         }
 
         internal bool CanPlayAnimation()
