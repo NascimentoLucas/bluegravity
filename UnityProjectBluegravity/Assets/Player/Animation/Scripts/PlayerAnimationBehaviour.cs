@@ -8,7 +8,6 @@ namespace Bluegravity.Game.Player.Animation
     {
         Idle,
         Walk,
-        Run,
     }
 
     public class PlayerAnimationBehaviour : MonoBehaviour
