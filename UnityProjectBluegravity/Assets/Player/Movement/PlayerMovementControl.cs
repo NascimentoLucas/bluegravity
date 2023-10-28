@@ -10,20 +10,21 @@ namespace Bluegravity.Game.Player.Movement
         Vector2 GetMovement();
     }
 
+    /// <summary>
+    /// Moves the <see cref="_playerTrans"/>.
+    /// </summary>
     public class PlayerMovementControl : MonoBehaviour
     {
         [Header("Setup")]
         [SerializeField]
         private Transform _playerTrans;
+        IMovementControls _controls;
 
         private Vector2 _delta;
 
         [Header("GD")]
         [SerializeField]
         private float _speed = 1;
-
-
-        IMovementControls _controls;
 
         public Vector2 Direction => _delta.normalized;
 

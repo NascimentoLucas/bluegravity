@@ -7,7 +7,6 @@ namespace Bluegravity.Game.Player.Animation
     [CreateAssetMenu(fileName = nameof(PlayerAnimationSO), menuName = "ScriptableObjects/" + nameof(PlayerAnimationSO), order = 1)]
     public class PlayerAnimationSO : ScriptableObject, IComparable
     {
-
         [Header("Setup")]
         [SerializeField]
         private PlayerStates _state;
@@ -40,7 +39,14 @@ namespace Bluegravity.Game.Player.Animation
             throw new ArgumentException("Object is not a " + nameof(PlayerAnimationSO));
         }
 
-        public virtual void UseAnimation(SpriteRenderer renderer, float time, Vector2 direction)
+        /// <summary>
+        /// Will be choose the animation that corresponds  to the given <paramref name="direction"/>.
+        /// Moreover, the time will be utilized to select the frame from the animation.
+        /// </summary>
+        /// <param name="renderer"></param>
+        /// <param name="time"></param>
+        /// <param name="direction"></param>
+        public void UseAnimation(SpriteRenderer renderer, float time, Vector2 direction)
         {
             if (direction == Vector2.zero) return;
 

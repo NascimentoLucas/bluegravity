@@ -170,6 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movement: {fileID: 1838449131}
+  _animation: {fileID: 2040531153}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

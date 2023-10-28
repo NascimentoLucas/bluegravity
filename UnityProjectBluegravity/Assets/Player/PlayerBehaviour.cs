@@ -14,8 +14,6 @@ namespace Bluegravity.Game.Player
         private PlayerMovementControl _movement;
         [SerializeField]
         private PlayerAnimationBehaviour _animation;
-
-
         PlayerInputBehaviour _inputActions;
 
 
@@ -24,7 +22,7 @@ namespace Bluegravity.Game.Player
             _movement.SetControl(this);
         }
 
-        public void OnEnable()
+        private void OnEnable()
         {
             if (_inputActions == null)
             {

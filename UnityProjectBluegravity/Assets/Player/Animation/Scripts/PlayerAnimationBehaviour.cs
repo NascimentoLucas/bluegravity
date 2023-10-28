@@ -32,7 +32,6 @@ namespace Bluegravity.Game.Player.Animation
             Array.Sort(_animation);
         }
 
-
         private void Update()
         {
             _animationTime += Time.deltaTime;
@@ -40,6 +39,11 @@ namespace Bluegravity.Game.Player.Animation
                 _animationTime = 0;
         }
 
+        /// <summary>
+        /// If it contains an animation for the given state, 
+        /// it will be executed
+        /// </summary>
+        /// <param name="state"></param>
         public void UseAnimation(PlayerStates state)
         {
             int index = (int)state;
