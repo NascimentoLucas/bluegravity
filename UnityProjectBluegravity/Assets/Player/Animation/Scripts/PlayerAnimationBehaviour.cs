@@ -20,10 +20,10 @@ namespace Bluegravity.Game.Player.Animation
 
         [Header("Setup.Animation")]
         [SerializeField]
-        private PlayerAnimation[] _animation;
+        private PlayerAnimationSO[] _animation;
 
 
-
+        Vector2 _direction;
         private float _animationTime;
 
 
@@ -32,10 +32,6 @@ namespace Bluegravity.Game.Player.Animation
             Array.Sort(_animation);
         }
 
-        private void Start()
-        {
-            UseAnimation(PlayerStates.Walk);
-        }
 
         private void Update()
         {
@@ -50,7 +46,12 @@ namespace Bluegravity.Game.Player.Animation
 
             if (index > _animation.Length - 1) return;
 
-            _animation[index].UseAnimation(_spriteRenderer, _animationTime);
+            _animation[index].UseAnimation(_spriteRenderer, _animationTime, _direction);
+        }
+
+        public void SetDirection(Vector2 direction)
+        {
+            _direction = direction;
         }
     }
 }

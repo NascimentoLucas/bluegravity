@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace Bluegravity.Game.Player.Animation
 {
-    [CreateAssetMenu(fileName = nameof(PlayerAnimation), menuName = "ScriptableObjects/" + nameof(PlayerAnimation), order = 1)]
-    public class PlayerAnimation : ScriptableObject, IComparable
+    [CreateAssetMenu(fileName = nameof(PlayerAnimationSO), menuName = "ScriptableObjects/" + nameof(PlayerAnimationSO), order = 1)]
+    public class PlayerAnimationSO : ScriptableObject, IComparable
     {
 
         [Header("Setup")]
@@ -29,7 +29,7 @@ namespace Bluegravity.Game.Player.Animation
         {
             if (obj == null) return 1;
 
-            if (obj is PlayerAnimation animation)
+            if (obj is PlayerAnimationSO animation)
             {
                 int me = (int)_state;
                 int other = (int)animation._state;
@@ -37,12 +37,24 @@ namespace Bluegravity.Game.Player.Animation
             }
 
 
-            throw new ArgumentException("Object is not a " + nameof(PlayerAnimation));
+            throw new ArgumentException("Object is not a " + nameof(PlayerAnimationSO));
         }
 
-        public virtual void UseAnimation(SpriteRenderer renderer, float time)
+        public virtual void UseAnimation(SpriteRenderer renderer, float time, Vector2 direction)
         {
-            Sprite[] _sprites = _up;
+            if (direction == Vector2.zero) return;
+
+            Sprite[] _sprites = null;
+
+            if (direction.x > 0)
+                _sprites = _right;
+            else if (direction.x < 0)
+                _sprites = _left;
+
+            if (direction.y > 0)
+                _sprites = _up;
+            else if (direction.y < 0)
+                _sprites = _down;
 
             int index = (int)Mathf.Lerp(0, _sprites.Length, time);
             renderer.sprite = _sprites[index];

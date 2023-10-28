@@ -25,7 +25,7 @@ namespace Bluegravity.Game.Player.Movement
 
         IMovementControls _controls;
 
-        public Vector2 XDirection => _delta.normalized;
+        public Vector2 Direction => _delta.normalized;
 
         private void Awake()
         {
