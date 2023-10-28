@@ -1,41 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Bluegravity.Game.Player.Input;
-using UnityEngine.InputSystem;
+using System;
 
 namespace Bluegravity.Game.Player.Movement
 {
+    public interface IMovementControls
+    {
+        Vector2 GetMovement();
+    }
+
     public class PlayerMovementControl : MonoBehaviour
     {
-
         [Header("Setup")]
         [SerializeField]
         private Transform _playerTrans;
 
-        private Vector2 delta;
+        private Vector2 _delta;
 
         [Header("GD")]
         [SerializeField]
         private float _speed = 1;
 
 
-        PlayerInputBehaviour _inputActions;
+        IMovementControls _controls;
 
-        public void OnEnable()
+        public Vector2 XDirection => _delta.normalized;
+
+        private void Awake()
         {
-            if (_inputActions == null)
-            {
-                _inputActions = new PlayerInputBehaviour();
-            }
-            _inputActions.Default.Enable();
+            enabled= _controls != null;
         }
 
         private void Update()
         {
-            delta = _inputActions.Default.Movement.ReadValue<Vector2>();
-            delta *= _speed * Time.deltaTime;
-            _playerTrans.position += new Vector3(delta.x, delta.y);
+            _delta = _controls.GetMovement();
+            _delta *= _speed * Time.deltaTime;
+            _playerTrans.position += new Vector3(_delta.x, _delta.y);
+        }
+
+        public void SetControl(IMovementControls controls)
+        {
+            _controls = controls;
+            enabled = _controls != null;
         }
     }
 }
