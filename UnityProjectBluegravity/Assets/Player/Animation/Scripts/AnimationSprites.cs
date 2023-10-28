@@ -66,6 +66,14 @@ namespace Bluegravity.Game.Player.Animation
             return index;
         }
 
+        /// <summary>
+        /// Returns the sprites associated with the given <paramref name="state"/>
+        /// and <paramref name="direction"/>.
+        /// </summary>
+        /// <param name="state"></param>
+        /// <param name="direction"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
         public Sprite[] GetSprites(PlayerStates state, Vector2 direction)
         {
             int row;

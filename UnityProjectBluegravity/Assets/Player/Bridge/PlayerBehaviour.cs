@@ -1,4 +1,5 @@
 using Bluegravity.Game.Player.Animation;
+using Bluegravity.Game.Player.Clothes;
 using Bluegravity.Game.Player.Input;
 using Bluegravity.Game.Player.Movement;
 using System.Collections;
@@ -7,19 +8,23 @@ using UnityEngine;
 
 namespace Bluegravity.Game.Player
 {
-    public class PlayerBehaviour : MonoBehaviour, IMovementControls
+    public class PlayerBehaviour : MonoBehaviour, IMovementControls, IAnimationHandler
     {
         [Header("Setup")]
         [SerializeField]
         private PlayerMovementControl _movement;
         [SerializeField]
         private PlayerAnimationBehaviour _animation;
-        PlayerInputBehaviour _inputActions;
+        [SerializeField]
+        private PlayerClothesBehaviour _clothes;
+
+        private PlayerInputBehaviour _inputActions;
 
 
         private void Start()
         {
             _movement.SetControl(this);
+            _animation.SetAnimationHandler(this);
         }
 
         private void OnEnable()
@@ -33,21 +38,24 @@ namespace Bluegravity.Game.Player
 
         private void Update()
         {
-            _animation.SetDirection(_movement.Direction);
-
             if (GetMovement().x != 0 || GetMovement().y != 0)
             {
-                _animation.UseAnimation(PlayerStates.Walk);
+                _animation.PlayAnimation(PlayerStates.Walk);
             }
             else
             {
-                _animation.UseAnimation(PlayerStates.Idle);
+                _animation.PlayAnimation(PlayerStates.Idle);
             }
         }
 
         public Vector2 GetMovement()
         {
             return _inputActions.Default.Movement.ReadValue<Vector2>(); ;
+        }
+
+        public Vector2 GetDirection()
+        {
+            return _movement.Direction;
         }
     }
 
