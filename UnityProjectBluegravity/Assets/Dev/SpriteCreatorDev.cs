@@ -1,4 +1,5 @@
 #if UNITY_EDITOR
+using Bluegravity.Game.Player.Animation;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,12 +12,10 @@ namespace Bluegravity.Dev
     {
         Texture2D _texture;
         Vector2 _scrollPos;
-        List<Sprite> _sprites;
+        AnimationSprites _sprites;
 
         private int _collum;
         private int _row;
-
-        int _count = 0;
 
         [MenuItem("Bluegravity/Dev/" + nameof(SpriteCreatorDev))]
         public static new void Show()
@@ -38,54 +37,45 @@ namespace Bluegravity.Dev
                 _collum = EditorGUI.IntField(GUILayoutUtility.GetRect(25, 25), nameof(_collum), _collum);
                 _row = EditorGUI.IntField(GUILayoutUtility.GetRect(25, 25), nameof(_row), _row);
 
-                if (_collum > 0 && _row > 0)
+                if (_collum > 0 && _row > 0 && _texture != null)
                 {
                     if (GUILayout.Button("Split"))
                     {
-                        _sprites = new List<Sprite>();
-
-                        int widht = _texture.width / _collum;
-                        int height = _texture.height / _row;
-
-                        for (int i = 0; i < _collum; i++)
-                        {
-                            for (int j = 0; j < _row; j++)
-                            {
-                                float y = i * height;
-                                Sprite s = Sprite.Create(
-                                    _texture,
-                                    new Rect(j * widht, y,
-                                    widht, height),
-                                    new Vector2(0.5f, 0.5f),
-                                    100.0f);
-
-                                _sprites.Add(s);
-                            }
-                        }
+                        _sprites = new AnimationSprites(_texture, _collum, _row);
                     }
                 }
 
-                if (_sprites != null && _sprites.Count > 0)
+                if (_sprites != null)
                 {
-                    GUILayout.BeginHorizontal();
-                    if (GUILayout.Button("Next"))
+
+                    Vector2[] directions = new Vector2[]
                     {
-                        _count += _collum;
-                    }
-                    if (GUILayout.Button("Back"))
+                        Vector2.zero,
+                        Vector2.left,
+                        Vector2.right,
+                        Vector2.down,
+                        Vector2.up,
+                    };
+
+                    List<Sprite> frames = new List<Sprite>();
+                    for (int i = 0; i < directions.Length; i++)
                     {
-                        _count -= _collum; ;
-                        if (_count < 0)
-                            _count = 0;
+                        Sprite[] f = _sprites.GetSprites(PlayerStates.Idle, directions[i]);
+                        for (int j = 0; j < f.Length; j++)
+                        {
+                            frames.Add(f[j]);
+                        }
+
                     }
-                    GUILayout.EndHorizontal();
+
 
                     GUILayout.BeginHorizontal();
-                    for (int i = 0; i < _collum; i++)
+
+                    for (int j = 0; j < frames.Count; j++)
                     {
-                        GUILayout.Label((_count + i).ToString());
-                        DrawOnGUISprite(_sprites[(_count + i) % _sprites.Count]);
+                        DrawOnGUISprite(frames[j]);
                     }
+
                     GUILayout.EndHorizontal();
                 }
             }

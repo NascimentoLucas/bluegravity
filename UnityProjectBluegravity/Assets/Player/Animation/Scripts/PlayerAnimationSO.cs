@@ -4,23 +4,23 @@ using UnityEngine;
 
 namespace Bluegravity.Game.Player.Animation
 {
+
     [CreateAssetMenu(fileName = nameof(PlayerAnimationSO), menuName = "ScriptableObjects/" + nameof(PlayerAnimationSO), order = 1)]
     public class PlayerAnimationSO : ScriptableObject, IComparable
     {
         [Header("Setup")]
         [SerializeField]
         private PlayerStates _state;
+        private AnimationSprites _sprites;
 
 
         [Header("Setup.Animations")]
         [SerializeField]
-        private Sprite[] _up;
+        private int _collum;
         [SerializeField]
-        private Sprite[] _right;
+        private int _row;
         [SerializeField]
-        private Sprite[] _down;
-        [SerializeField]
-        private Sprite[] _left;
+        private Texture2D _texture;
 
         public PlayerStates State { get => _state; }
 
@@ -48,22 +48,13 @@ namespace Bluegravity.Game.Player.Animation
         /// <param name="direction"></param>
         public void UseAnimation(SpriteRenderer renderer, float time, Vector2 direction)
         {
+            if (_sprites == null)
+                _sprites = new AnimationSprites(_texture, _collum, _row);
             if (direction == Vector2.zero) return;
 
-            Sprite[] _sprites = null;
-
-            if (direction.x > 0)
-                _sprites = _right;
-            else if (direction.x < 0)
-                _sprites = _left;
-
-            if (direction.y > 0)
-                _sprites = _up;
-            else if (direction.y < 0)
-                _sprites = _down;
-
-            int index = (int)Mathf.Lerp(0, _sprites.Length, time);
-            renderer.sprite = _sprites[index];
+            Sprite[] frames = _sprites.GetSprites(_state, direction);
+            int index = (int)Mathf.Lerp(0, frames.Length, time);
+            renderer.sprite = frames[index];
         }
     }
 }
