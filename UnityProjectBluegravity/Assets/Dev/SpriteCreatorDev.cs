@@ -1,4 +1,5 @@
 #if UNITY_EDITOR
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -11,6 +12,9 @@ namespace Bluegravity.Dev
         Texture2D _texture;
         Vector2 _scrollPos;
         List<Sprite> _sprites;
+
+        private int _collum;
+        private int _row;
 
         int _count = 0;
 
@@ -31,28 +35,63 @@ namespace Bluegravity.Dev
             {
                 _texture = EditorGUILayout.ObjectField(_texture, typeof(Texture2D), true) as Texture2D;
 
-                if (GUILayout.Button("Split"))
+                _collum = EditorGUI.IntField(GUILayoutUtility.GetRect(25, 25), nameof(_collum), _collum);
+                _row = EditorGUI.IntField(GUILayoutUtility.GetRect(25, 25), nameof(_row), _row);
+
+                if (_collum > 0 && _row > 0)
                 {
-                    _sprites = new List<Sprite>();
-                    Sprite s = Sprite.Create(_texture,
-                        new Rect(0.0f, 0.0f,
-                        _texture.width, _texture.height),
-                        new Vector2(0.5f, 0.5f),
-                        100.0f);
-                    _sprites.Add(s);
+                    if (GUILayout.Button("Split"))
+                    {
+                        _sprites = new List<Sprite>();
+
+                        int widht = _texture.width / _collum;
+                        int height = _texture.height / _row;
+
+                        for (int i = 0; i < _collum; i++)
+                        {
+                            for (int j = 0; j < _row; j++)
+                            {
+                                float y = i * height;
+                                Sprite s = Sprite.Create(
+                                    _texture,
+                                    new Rect(j * widht, y,
+                                    widht, height),
+                                    new Vector2(0.5f, 0.5f),
+                                    100.0f);
+
+                                _sprites.Add(s);
+                            }
+                        }
+                    }
                 }
 
                 if (_sprites != null && _sprites.Count > 0)
                 {
+                    GUILayout.BeginHorizontal();
                     if (GUILayout.Button("Next"))
                     {
-                        _count++;
+                        _count += _collum;
                     }
-                    DrawOnGUISprite(_sprites[_count % _sprites.Count]);
+                    if (GUILayout.Button("Back"))
+                    {
+                        _count -= _collum; ;
+                        if (_count < 0)
+                            _count = 0;
+                    }
+                    GUILayout.EndHorizontal();
+
+                    GUILayout.BeginHorizontal();
+                    for (int i = 0; i < _collum; i++)
+                    {
+                        GUILayout.Label((_count + i).ToString());
+                        DrawOnGUISprite(_sprites[(_count + i) % _sprites.Count]);
+                    }
+                    GUILayout.EndHorizontal();
                 }
             }
-            catch
+            catch (Exception e)
             {
+                Debug.LogException(e);
             }
 
 
@@ -77,8 +116,6 @@ namespace Bluegravity.Dev
             c.yMax /= tex.height;
             GUI.DrawTextureWithTexCoords(rect, tex, c);
         }
-
     }
-
 }
 #endif
