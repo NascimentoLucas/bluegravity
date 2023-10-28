@@ -8,11 +8,11 @@ namespace Bluegravity.Game.Player.Clothes
         [Header("Setup")]
         [SerializeField]
         [Range(0f, PlayerClothesBehaviour.MaxLayer)]
-        private int _layer = 0;
+        private uint _layer = 0;
         [SerializeField]
         private Texture2D _texture;
 
-        public int Layer { get => _layer; }
+        public uint Layer { get => _layer; }
         public Texture2D Texture { get => _texture; }
     }
 

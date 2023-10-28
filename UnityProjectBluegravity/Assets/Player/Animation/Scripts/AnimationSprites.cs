@@ -47,13 +47,13 @@ namespace Bluegravity.Game.Player.Animation
             }
         }
 
-        private Directions GetDirection(Vector2 dirct)
+        private Directions GetDirection(Vector2 direc)
         {
-            if (dirct.x < 0)
+            if (direc.x < 0)
                 return Directions.left;
-            if (dirct.x > 0)
+            if (direc.x > 0)
                 return Directions.right;
-            if (dirct.y > 0)
+            if (direc.y > 0)
                 return Directions.top;
 
             return Directions.bottom;
@@ -84,10 +84,11 @@ namespace Bluegravity.Game.Player.Animation
                     row = 4;
                     row += (int)GetDirection(direction);
                     collum = 0;
-                    //Debug.Log($"{GetDirection(direction)}: {row}/{GetIndex(row, collum)}");
+                    //Debug.Log($"{state}: {GetDirection(direction)}: {row}/{GetIndex(row, collum)}");
                     return new Sprite[] { _sprites[GetIndex(row, collum)] };
                 case PlayerStates.Walk:
                     row = (int)GetDirection(direction);
+                    collum = 0;
                     List<Sprite> sprites = new List<Sprite>();
 
                     for (int i = 0; i < 6; i++)
@@ -95,6 +96,7 @@ namespace Bluegravity.Game.Player.Animation
                         sprites.Add(_sprites[GetIndex(row, i)]);
                     }
 
+                    //Debug.Log($"{state}: {GetDirection(direction)}: {row}/{GetIndex(row, collum)}");
                     return sprites.ToArray();
                 default:
                     throw new NotImplementedException();

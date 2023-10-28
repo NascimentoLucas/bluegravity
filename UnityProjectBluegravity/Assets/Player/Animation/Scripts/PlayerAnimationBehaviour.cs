@@ -21,8 +21,10 @@ namespace Bluegravity.Game.Player.Animation
         [SerializeField]
         private SpriteRenderer _spriteRenderer;
         private AnimationSprites _sprites;
+
         private PlayerAnimationSO _currentAnimation;
         private IAnimationHandler _animationHandler;
+        private Sprite[] _currentFrames;
 
 
         [Header("Setup.Animation")]
@@ -57,34 +59,39 @@ namespace Bluegravity.Game.Player.Animation
         {
             _animationTime += Time.deltaTime;
             if (_animationTime > 1)
+            {
                 _animationTime = 0;
+            }
+
+            Play();
         }
 
-        private void PlayAnimation(PlayerAnimationSO animation)
+        private void Play()
         {
-            if (_currentAnimation == animation) return;
-            if (_animationHandler == null) return;
-            if (_sprites == null)
-                _sprites = new AnimationSprites(animation.Texture, _collum, _row);
+            _currentFrames = _sprites.GetSprites(
+                _currentAnimation.State,
+                _animationHandler.GetDirection());
 
-            _currentAnimation = animation;
-            Sprite[] frames = _sprites.GetSprites(_currentAnimation.State, _animationHandler.GetDirection());
-            int index = (int)Mathf.Lerp(0, frames.Length, _animationTime);
-            _spriteRenderer.sprite = frames[index];
+            int index = (int)Mathf.Lerp(0, _currentFrames.Length, _animationTime);
+            _spriteRenderer.sprite = _currentFrames[index];
         }
 
         /// <summary>
         /// If it contains an animation for the given state, 
-        /// it will be executed
+        /// it will start play
         /// </summary>
         /// <param name="state"></param>
         public void PlayAnimation(PlayerStates state)
         {
+            if (_animationHandler == null) return;
+
             int index = (int)state;
-
             if (index > _animation.Length - 1) return;
+            if (_currentAnimation == _animation[index]) return;
 
-            PlayAnimation(_animation[index]);
+            _currentAnimation = _animation[index];
+
+            _sprites = new AnimationSprites(_currentAnimation.Texture, _collum, _row);
         }
 
 

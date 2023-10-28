@@ -5,7 +5,7 @@ namespace Bluegravity.Game.Player.Clothes
 {
     public class ClotheRender
     {
-        private SpriteRenderer _render;
+        private readonly SpriteRenderer _render;
         private AnimationSprites _animation;
 
         public AnimationSprites Animation { get => _animation; }
@@ -20,6 +20,7 @@ namespace Bluegravity.Game.Player.Clothes
         internal void SetClothe(PlayerClotheSO so, int collum, int row)
         {
             _animation = new AnimationSprites(so.Texture, collum, row);
+            _render.renderingLayerMask = so.Layer;
         }
 
         internal bool CanPlayAnimation()
