@@ -68,16 +68,26 @@ namespace Bluegravity.Game.Player.Animation
 
         public Sprite[] GetSprites(PlayerStates state, Vector2 direction)
         {
+            int row;
+            int collum;
             switch (state)
             {
                 case PlayerStates.Idle:
-                    int row = 4;
+                    row = 4;
                     row += (int)GetDirection(direction);
-                    int collum = 0;
+                    collum = 0;
                     //Debug.Log($"{GetDirection(direction)}: {row}/{GetIndex(row, collum)}");
                     return new Sprite[] { _sprites[GetIndex(row, collum)] };
                 case PlayerStates.Walk:
-                    throw new NotImplementedException();
+                    row = (int)GetDirection(direction);
+                    List<Sprite> sprites = new List<Sprite>();
+
+                    for (int i = 0; i < 6; i++)
+                    {
+                        sprites.Add(_sprites[GetIndex(row, i)]);
+                    }
+
+                    return sprites.ToArray();
                 default:
                     throw new NotImplementedException();
             }

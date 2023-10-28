@@ -57,26 +57,8 @@ namespace Bluegravity.Dev
                         Vector2.up,
                     };
 
-                    List<Sprite> frames = new List<Sprite>();
-                    for (int i = 0; i < directions.Length; i++)
-                    {
-                        Sprite[] f = _sprites.GetSprites(PlayerStates.Idle, directions[i]);
-                        for (int j = 0; j < f.Length; j++)
-                        {
-                            frames.Add(f[j]);
-                        }
-
-                    }
-
-
-                    GUILayout.BeginHorizontal();
-
-                    for (int j = 0; j < frames.Count; j++)
-                    {
-                        DrawOnGUISprite(frames[j]);
-                    }
-
-                    GUILayout.EndHorizontal();
+                    ShowIdle(directions);
+                    ShowWalk(directions);
                 }
             }
             catch (Exception e)
@@ -86,6 +68,48 @@ namespace Bluegravity.Dev
 
 
             EditorGUILayout.EndScrollView();
+
+        }
+
+        private void ShowIdle(Vector2[] directions)
+        {
+            List<Sprite> frames = new List<Sprite>();
+            for (int i = 0; i < directions.Length; i++)
+            {
+                Sprite[] f = _sprites.GetSprites(PlayerStates.Idle, directions[i]);
+                for (int j = 0; j < f.Length; j++)
+                {
+                    frames.Add(f[j]);
+                }
+            }
+
+
+            GUILayout.BeginHorizontal();
+
+            for (int j = 0; j < frames.Count; j++)
+            {
+                DrawOnGUISprite(frames[j]);
+            }
+
+            GUILayout.EndHorizontal();
+        }
+
+        private void ShowWalk(Vector2[] directions)
+        {
+            for (int i = 0; i < directions.Length; i++)
+            {
+                Sprite[] f = _sprites.GetSprites(PlayerStates.Walk, directions[i]);
+
+                GUILayout.BeginHorizontal();
+
+                for (int j = 0; j < f.Length; j++)
+                {
+                    DrawOnGUISprite(f[j]);
+                }
+
+                GUILayout.EndHorizontal();
+            }
+
 
         }
 
