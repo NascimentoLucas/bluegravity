@@ -33,6 +33,11 @@ namespace Bluegravity.Game.Player.Animation
             Array.Sort(_animation);
         }
 
+        private void Start()
+        {
+            UseAnimation(PlayerStates.Walk);
+        }
+
         private void Update()
         {
             _animationTime += Time.deltaTime;
