@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Bluegravity.Game.Player;
 using UnityEngine.UI;
+using Bluegravity.Game.Economy;
 
 namespace Bluegravity.Game.Clothes
 {
@@ -19,7 +20,10 @@ namespace Bluegravity.Game.Clothes
 
         public void ButtonPressed()
         {
-            PlayerBehaviour.Instance.WearClothe(_clothe);
+            if (EconomyControll.Instance.SpendMoney(_clothe.GetPrice()))
+            {
+                PlayerBehaviour.Instance.WearClothe(_clothe);
+            }
         }
     }
 
