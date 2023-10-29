@@ -423,6 +423,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4196268663597468762, guid: 22e8eb6df8702114bb36493a8610f7a0, type: 3}
   m_PrefabInstance: {fileID: 323004667}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &412672112 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4196268663597468761, guid: 22e8eb6df8702114bb36493a8610f7a0, type: 3}
+  m_PrefabInstance: {fileID: 323004667}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9593c298bcab0cd49adb4034c6fc7efb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &444614961
 GameObject:
   m_ObjectHideFlags: 0
@@ -1205,7 +1216,7 @@ MonoBehaviour:
   _animator: {fileID: 9202252985550464948}
   _showStoreButton: {fileID: 303327121}
   _buyPanel: {fileID: 1538887542}
-  _sellPanel: {fileID: 0}
+  _sellPanel: {fileID: 412672112}
   _clothes:
   - {fileID: 11400000, guid: 3c076519391d8d342a39a3ec4d599b53, type: 2}
   - {fileID: 11400000, guid: 96f9c28560a64324ea5e034d1ec4fc16, type: 2}

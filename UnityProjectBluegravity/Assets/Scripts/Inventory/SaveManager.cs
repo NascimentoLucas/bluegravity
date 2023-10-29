@@ -1,5 +1,6 @@
 using Bluegravity.Game.Economy;
 using Bluegravity.Game.Inventory;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -19,7 +20,7 @@ namespace Bluegravity.Game.Save
                 Instance = this;
                 transform.parent = null;
                 DontDestroyOnLoad(gameObject);
-                _data = new InventoryData();
+                _data = InventoryData.LoadJson();
             }
             else
             {
@@ -29,27 +30,36 @@ namespace Bluegravity.Game.Save
 
         private void Start()
         {
+            EconomyControll.Instance.SetMoney(_data.GetGold());
             EconomyControll.Instance.AddCallback(this);
+        }
+
+        private void Save()
+        {
+            InventoryData.SaveToJson(_data);
         }
 
         internal void AddItem(string id)
         {
             _data.AddItem(id);
+            Save();
         }
 
         internal void RemoveItem(string id)
         {
             _data.RemoveItem(id);
-        }
-
-        internal bool IsPurchased(string id)
-        {
-            return _data.Contains(id);
+            Save();
         }
 
         public void CurrencyUpdated(float currency)
         {
             _data.SetGold(currency);
+            Save();
+        }
+
+        internal bool IsPurchased(string id)
+        {
+            return _data.Contains(id);
         }
 
         public void IterateItens(UnityAction<InventoryItem> action)

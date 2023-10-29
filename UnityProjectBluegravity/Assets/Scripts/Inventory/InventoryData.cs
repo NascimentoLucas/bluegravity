@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Newtonsoft.Json;
 
 namespace Bluegravity.Game.Inventory
 {
@@ -9,37 +10,56 @@ namespace Bluegravity.Game.Inventory
     [Serializable]
     public class InventoryItem
     {
-        [SerializeField]
-        private readonly string _id;
-        [SerializeField]
-        private readonly string _name;
-        [SerializeField]
-        private int _quantity;
+        public string Id;
+        public string Name;
+        public int Quantity;
 
-        public string Id => _id;
-        public string Name => _name;
-        public int Quantity => _quantity;
-
+        public InventoryItem()
+        {
+        }
 
         public InventoryItem(string id, string name)
         {
-            _id = id;
-            _name = name;
-            _quantity = 1;
+            Id = id;
+            Name = name;
+            Quantity = 1;
         }
 
+        public InventoryItem(InventoryItem inventoryItem)
+        {
+            Id = inventoryItem.Id;
+            Name = inventoryItem.Name;
+            Quantity = inventoryItem.Quantity;
+        }
 
         internal void Add(int quantity)
         {
-            _quantity += quantity;
+            Quantity += quantity;
         }
     }
 
     [Serializable]
+    public class Root
+    {
+        public float _gold;
+        public Dictionary<string, InventoryItem> _itens;
+
+        public Root(float gold, Dictionary<string, InventoryItem> itens)
+        {
+            _gold = gold;
+            _itens = itens;
+        }
+    }
+
+
+    [Serializable]
     public class InventoryData
     {
+        private const string PrefsKey = "InventoryData";
+
         [SerializeField]
         private float _gold;
+
         [SerializeField]
         private Dictionary<string, InventoryItem> _itens = new Dictionary<string, InventoryItem>();
 
@@ -53,16 +73,6 @@ namespace Bluegravity.Game.Inventory
             return false;
         }
 
-        public void RemoveItem(string id)
-        {
-            if (Contains(id))
-            {
-                _itens[id].Add(-1);
-                if (_itens[id].Quantity < 1)
-                    _itens.Remove(id);
-            }
-        }
-
         internal void IterateItens(UnityAction<InventoryItem> action)
         {
             if (action == null) return;
@@ -70,6 +80,16 @@ namespace Bluegravity.Game.Inventory
             foreach (var item in _itens.Keys)
             {
                 action.Invoke(_itens[item]);
+            }
+        }
+
+        public void RemoveItem(string id)
+        {
+            if (_itens.ContainsKey(id))
+            {
+                _itens[id].Add(-1);
+                if (_itens[id].Quantity < 1)
+                    _itens.Remove(id);
             }
         }
 
@@ -92,6 +112,49 @@ namespace Bluegravity.Game.Inventory
         public void SetGold(float currency)
         {
             _gold = currency;
+        }
+
+        internal float GetGold()
+        {
+            return _gold;
+        }
+
+        internal static InventoryData LoadJson()
+        {
+            try
+            {
+                if (PlayerPrefs.HasKey(PrefsKey))
+                {
+                    string json = PlayerPrefs.GetString(PrefsKey);
+                    Debug.Log(json);
+                    Root r = JsonConvert.DeserializeObject<Root>(json);
+
+                    InventoryData data = new InventoryData();
+                    data._gold = r._gold;
+                    foreach (var key in r._itens.Keys)
+                    {
+                        data._itens.Add(key, new InventoryItem(r._itens[key]));
+                    }
+
+                    return data;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+
+            return new InventoryData();
+        }
+
+
+        internal static void SaveToJson(InventoryData data)
+        {
+            Root r = new Root(data._gold, data._itens);
+
+            string json = JsonConvert.SerializeObject(r, Formatting.Indented);
+            Debug.Log(json);
+            PlayerPrefs.SetString(PrefsKey, json);
         }
     }
 

@@ -23,6 +23,14 @@ namespace Bluegravity.Game.Item
             cell.Setup(handle, view);
             _scroll.verticalNormalizedPosition = 0;
         }
+
+        public void Clear()
+        {
+            for (int i = _layout.transform.childCount - 1; i >= 0; i--)
+            {
+                Destroy(_layout.transform.GetChild(i).gameObject);
+            }
+        }
     }
 
 }

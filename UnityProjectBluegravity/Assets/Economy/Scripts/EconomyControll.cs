@@ -21,7 +21,6 @@ namespace Bluegravity.Game.Economy
 
         private float _currency = 0;
 
-        public string KeyCurrency { get => "KeyCurrency"; }
         public float Currency { get => _currency; }
 
         private void Awake()
@@ -38,16 +37,10 @@ namespace Bluegravity.Game.Economy
                 Destroy(gameObject);
                 return;
             }
-
-
-            _currency = PlayerPrefs.GetFloat(KeyCurrency, 0);
         }
 
-        public void AddMoney(float value)
+        private void CallBack()
         {
-            _currency += value;
-            PlayerPrefs.SetFloat(KeyCurrency, _currency);
-
             for (int i = 0; i < _currencyChanges.Count; i++)
             {
                 try
@@ -60,6 +53,18 @@ namespace Bluegravity.Game.Economy
                 }
 
             }
+        }
+
+        public void SetMoney(float value)
+        {
+            _currency = value;
+            CallBack();
+        }
+
+        public void AddMoney(float value)
+        {
+            _currency += value;
+            CallBack();
         }
 
         public bool SpendMoney(float value)
@@ -68,21 +73,7 @@ namespace Bluegravity.Game.Economy
                 return false;
 
             _currency -= value;
-            PlayerPrefs.SetFloat(KeyCurrency, _currency);
-
-
-            for (int i = 0; i < _currencyChanges.Count; i++)
-            {
-                try
-                {
-                    _currencyChanges[i].CurrencyUpdated(_currency);
-                }
-                catch (System.Exception e)
-                {
-                    Debug.LogException(e);
-                }
-
-            }
+            CallBack();
 
             return true;
         }

@@ -52,6 +52,8 @@ namespace Bluegravity.Game.Clothes
 
             SaveManager.Instance.IterateItens(GetClothe);
 
+            _sellPanel.Clear();
+
             for (int i = 0; i < inventory.Count; i++)
             {
                 StoreSellItem item = new StoreSellItem(inventory[i]);
@@ -64,7 +66,10 @@ namespace Bluegravity.Game.Clothes
                 {
                     if (_clothes[i].Id.Equals(item.Id))
                     {
-                        inventory.Add(_clothes[i]);
+                        if (item.Quantity > 0)
+                        {
+                            inventory.Add(_clothes[i]);
+                        }
                         return;
                     }
                 }
