@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _layer: 4
   _texture: {fileID: 2800000, guid: 256e5ae34e67fc04e90a88d896fb4462, type: 3}
+  _price: 250
+  _icon: {fileID: 0}
+  _itemName: 

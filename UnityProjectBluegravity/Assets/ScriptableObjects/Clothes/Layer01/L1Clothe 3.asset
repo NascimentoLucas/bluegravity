@@ -10,7 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49704391e2417b741a7b61c2b8446147, type: 3}
-  m_Name: PlayerClotheSO 3
+  m_Name: L1Clothe 3
   m_EditorClassIdentifier: 
   _layer: 1
   _texture: {fileID: 2800000, guid: 502bd675e27563c40b02163fc2384d67, type: 3}
+  _price: 5
+  _icon: {fileID: 0}
+  _itemName: 
