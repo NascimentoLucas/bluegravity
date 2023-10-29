@@ -26,6 +26,10 @@ namespace Bluegravity.Game.Player.Clothes
             {
                 GameObject obj = new GameObject($"{nameof(ClotheRender)}.{i + 1}");
                 obj.transform.parent = transform;
+                if (transform.parent != null)
+                {
+                    obj.transform.position = transform.parent.position;
+                }
                 SpriteRenderer render = obj.AddComponent<SpriteRenderer>();
                 _renderers[i] = new ClotheRender(render);
             }
