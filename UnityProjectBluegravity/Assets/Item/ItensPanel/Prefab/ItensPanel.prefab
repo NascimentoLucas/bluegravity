@@ -327,6 +327,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9593c298bcab0cd49adb4034c6fc7efb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 0}
   _cellPrefab: {fileID: 3820791281982032761, guid: da1cf82edcdca8644abe056876cfa045, type: 3}
   _layout: {fileID: 4196268663185648253}
+  _scroll: {fileID: 4196268662381674232}
