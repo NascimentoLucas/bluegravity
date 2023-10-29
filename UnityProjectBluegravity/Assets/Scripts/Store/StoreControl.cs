@@ -32,6 +32,7 @@ namespace Bluegravity.Game.Clothes
         [SerializeField]
         private PlayerClotheSO[] _clothes;
 
+        public PlayerClotheSO[] Clothes { get => _clothes;  }
 
         private void Start()
         {
