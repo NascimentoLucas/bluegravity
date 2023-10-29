@@ -46,5 +46,11 @@ namespace Bluegravity.Game.Player.Movement
             _controls = controls;
             enabled = _controls != null;
         }
+
+        public void MoveTo(Vector3 position)
+        {
+            _playerBody.velocity = Vector2.zero;
+            _playerBody.transform.position = position;
+        }
     }
 }

@@ -70,6 +70,11 @@ namespace Bluegravity.Game.Player
         {
             _clothes.SetClothe(clothe);
         }
+
+        internal void MoveTo(Vector3 position)
+        {
+            _movement.MoveTo(position);
+        }
     }
 
 }

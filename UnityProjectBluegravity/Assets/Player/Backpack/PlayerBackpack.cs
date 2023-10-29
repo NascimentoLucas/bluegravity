@@ -50,7 +50,6 @@ namespace Bluegravity.Game.Player.Backpack
         {
             if (IsPurchased())
             {
-                Debug.Log(_clothe.name, _clothe);
                 PlayerBehaviour.Instance.WearClothe(_clothe);
             }
         }

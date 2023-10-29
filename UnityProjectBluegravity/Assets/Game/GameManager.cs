@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 namespace Bluegravity.Game
 {
+
     public class GameManager : MonoBehaviour
     {
         [Header("Setup")]
@@ -25,7 +26,7 @@ namespace Bluegravity.Game
         {
             _loadCanvas.gameObject.SetActive(true);
             SceneManager.LoadSceneAsync(_menuScene, LoadSceneMode.Single);
-        } 
+        }
         #endregion
-    } 
+    }
 }
