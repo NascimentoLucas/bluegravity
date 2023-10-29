@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Bluegravity.Game.Player.Clothes
+namespace Bluegravity.Game.Clothes
 {
     public class PlayerClothesBehaviour : MonoBehaviour
     {

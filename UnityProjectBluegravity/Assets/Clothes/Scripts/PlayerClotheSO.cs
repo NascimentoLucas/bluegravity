@@ -1,7 +1,7 @@
 ﻿using Bluegravity.Game.Item;
 using UnityEngine;
 
-namespace Bluegravity.Game.Player.Clothes
+namespace Bluegravity.Game.Clothes
 {
     [CreateAssetMenu(fileName = nameof(PlayerClotheSO), menuName = "ScriptableObjects/" + nameof(PlayerClotheSO), order = 1)]
     public class PlayerClotheSO : ScriptableObject, IViewItem

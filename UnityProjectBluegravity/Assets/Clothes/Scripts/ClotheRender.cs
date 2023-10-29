@@ -1,7 +1,7 @@
 ﻿using Bluegravity.Game.Player.Animation;
 using UnityEngine;
 
-namespace Bluegravity.Game.Player.Clothes
+namespace Bluegravity.Game.Clothes
 {
     public class ClotheRender
     {

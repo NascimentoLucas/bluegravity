@@ -33,7 +33,7 @@ namespace Bluegravity.Game.Player.Movement
             enabled = _controls != null;
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             _delta = _controls.GetMovement();
             _delta *= _speed;

@@ -1,5 +1,5 @@
 using Bluegravity.Game.Player.Animation;
-using Bluegravity.Game.Player.Clothes;
+using Bluegravity.Game.Clothes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

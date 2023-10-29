@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Bluegravity.Game.Item
 {
-    public class ItemPanel : MonoBehaviour
+    public class ItensPanel : MonoBehaviour
     {
         [Header("Setup")]
         [SerializeField]
@@ -13,15 +14,11 @@ namespace Bluegravity.Game.Item
         [SerializeField]
         private LayoutGroup _layout;
 
-
-        private void Start()
+        public void CreateItem(IHandleItem handle, IViewItem view)
         {
-            for (int i = 0; i < 25; i++)
-            {
-                Instantiate(_cellPrefab, _layout.transform);
-            }
+            ItemUICell cell = Instantiate(_cellPrefab, _layout.transform);
+            cell.Setup(handle, view);
         }
-
     }
 
 }
