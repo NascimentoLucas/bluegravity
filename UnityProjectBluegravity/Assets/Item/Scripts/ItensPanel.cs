@@ -21,6 +21,11 @@ namespace Bluegravity.Game.Item
         {
             ItemUICell cell = Instantiate(_cellPrefab, _layout.transform);
             cell.Setup(handle, view);
+            ResetScroll();
+        }
+
+        public void ResetScroll()
+        {
             _scroll.verticalNormalizedPosition = 0;
         }
 
