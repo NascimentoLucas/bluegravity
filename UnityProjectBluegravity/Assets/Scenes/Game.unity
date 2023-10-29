@@ -535,6 +535,7 @@ MonoBehaviour:
   _clothes:
   - {fileID: 11400000, guid: 3c076519391d8d342a39a3ec4d599b53, type: 2}
   - {fileID: 11400000, guid: 39b0291bcd3e7d1428a6bf0b132050f2, type: 2}
+  _direc: {x: 1, y: 0}
 --- !u!1 &2774349704366335016
 GameObject:
   m_ObjectHideFlags: 0
