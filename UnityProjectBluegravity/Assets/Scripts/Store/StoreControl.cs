@@ -8,6 +8,7 @@ using UnityEngine.UI;
 using Bluegravity.Game.Save;
 using Bluegravity.Game.Inventory;
 using System;
+using Bluegravity.Game.View;
 
 namespace Bluegravity.Game.Clothes
 {
@@ -18,7 +19,7 @@ namespace Bluegravity.Game.Clothes
 
         [Header("Setup")]
         [SerializeField]
-        private Animator _animator;
+        private AnimatorView _animator;
         [SerializeField]
         private Button _showStoreButton;
 
@@ -36,7 +37,7 @@ namespace Bluegravity.Game.Clothes
 
         private void Start()
         {
-            _animator.SetBool(ShowKey, false);
+            _animator.Show(false);
             _showStoreButton.gameObject.SetActive(false);
             for (int i = 0; i < _clothes.Length; i++)
             {
@@ -91,7 +92,7 @@ namespace Bluegravity.Game.Clothes
             PlayerBehaviour player = collision.gameObject.GetComponent<PlayerBehaviour>();
             if (player)
             {
-                _animator.SetBool(ShowKey, false);
+                _animator.Show(false);
                 _showStoreButton.gameObject.SetActive(false);
             }
         }
@@ -104,7 +105,7 @@ namespace Bluegravity.Game.Clothes
                 SetupInventory();
             }
 
-            _animator.SetBool(ShowKey, value);
+            _animator.Show(value);
             _showStoreButton.gameObject.SetActive(!value);
 
         }

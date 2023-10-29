@@ -2,6 +2,7 @@ using Bluegravity.Game.Clothes;
 using Bluegravity.Game.Inventory;
 using Bluegravity.Game.Item;
 using Bluegravity.Game.Save;
+using Bluegravity.Game.View;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -62,9 +63,16 @@ namespace Bluegravity.Game.Player.Backpack
         private StoreControl _store;
         [SerializeField]
         private ItensPanel _view;
+        [SerializeField]
+        private AnimatorView _backpackAnimator;
 
 
         private void Start()
+        {
+            SetBackpack();
+        }
+
+        private void SetBackpack()
         {
             List<PlayerClotheSO> inventory = new List<PlayerClotheSO>();
 
@@ -93,6 +101,18 @@ namespace Bluegravity.Game.Player.Backpack
                 }
             }
         }
+
+        #region UI Methods
+        public void ShowBackpack(bool b)
+        {
+            if (b)
+            {
+                SetBackpack();
+            }
+
+            _backpackAnimator.Show(b);
+        }
+        #endregion
 
     }
 
