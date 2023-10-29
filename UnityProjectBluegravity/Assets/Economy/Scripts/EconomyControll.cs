@@ -1,5 +1,6 @@
 #if UNITY_EDITOR
 using NaughtyAttributes;
+using System;
 #endif
 using System.Collections;
 using System.Collections.Generic;
@@ -81,6 +82,11 @@ namespace Bluegravity.Game.Economy
         public void AddCallback(ICurrencyCallback callback)
         {
             _currencyChanges.Add(callback);
+        }
+
+        internal void RemoveCallback(ICurrencyCallback callback)
+        {
+            _currencyChanges.Remove(callback);
         }
 
 

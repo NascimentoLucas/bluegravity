@@ -26,7 +26,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 300}
   m_MaxSize: {x: 32384, y: 24288}
   vertical: 0
-  controlID: 57842
+  controlID: 58479
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -91,7 +91,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 0
+    m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 57872
+  controlID: 58503
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -268,23 +268,23 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Store
+    - Assets/Dev
     m_Globs: []
     m_OriginalText: 
     m_FilterByTypeIntersection: 0
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scripts/Store
+  - Assets/Dev
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Projetos\Bluegravity\UnityProjectBluegravity
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: ea7d0000
-    m_LastClickedID: 32234
-    m_ExpandedIDs: 00000000186400001c6400001e6400002064000022640000246400002c64000018a2000000ca9a3b
+    m_SelectedIDs: 6e400100
+    m_LastClickedID: 82030
+    m_ExpandedIDs: 00000000186400001c6400001e6400002064000022640000246400002c64000018a200002025010000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -337,8 +337,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 56090100
-    m_LastClickedInstanceID: 67926
+    m_SelectedInstanceIDs: f4410100
+    m_LastClickedInstanceID: 82420
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: b8fd0000
     m_RenameOverlay:
@@ -392,7 +392,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 57843
+  controlID: 58480
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -424,7 +424,7 @@ MonoBehaviour:
   - {fileID: 15}
   - {fileID: 16}
   m_Selected: 3
-  m_LastSelected: 6
+  m_LastSelected: 0
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -455,10 +455,10 @@ MonoBehaviour:
     m_SaveData: []
     m_OverlaysVisible: 1
   m_TreeViewState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
-    m_LastClickedID: 0
-    m_ExpandedIDs: 
+    scrollPos: {x: 0, y: 13}
+    m_SelectedIDs: 41134436
+    m_LastClickedID: 910431041
+    m_ExpandedIDs: ffffffff
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -920,9 +920,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 902.5319, y: 665.9173, z: 1.1286657}
+    m_Target: {x: 847.5387, y: 558.7812, z: -1.2350335}
     speed: 2
-    m_Value: {x: 902.5319, y: 665.9173, z: 1.1286657}
+    m_Value: {x: 846.9571, y: 560.166, z: -1.1026435}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -973,9 +973,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 774.0278
+    m_Target: 307.43927
     speed: 2
-    m_Value: 774.0278
+    m_Value: 294.20026
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1060,7 +1060,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 67926
+  m_LastSelectedObjectID: -381946
 --- !u!114 &16
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1342,7 +1342,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 67926
+  m_LastSelectedObjectID: -381946
 --- !u!114 &20
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1368,7 +1368,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 300}
   m_MaxSize: {x: 8096, y: 24288}
   vertical: 1
-  controlID: 57708
+  controlID: 58554
 --- !u!114 &21
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1427,9 +1427,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 56090100
-      m_LastClickedID: 67926
-      m_ExpandedIDs: a22afbff2c57fbff2e57fbff8a57fbffea5dfbff0e5ffbff9c70fbff30bafbffb6f2fbffc4f3fbffc6f3fbffb0bdffffb2bdffffe0cbffff96e1ffffecfafffff6faffff00fbffff20fbffff22fbfffff4fffffff8610000026200001662000020620000246200003e620000586200002e0701004c0701007a070100b8070100da080100260901005609010064090100
+      m_SelectedIDs: f4410100
+      m_LastClickedID: 82420
+      m_ExpandedIDs: 60bef9ffe6f9f9ff3afbf9ff2afcf9ff82fcf9ff4607faff4807faffc207faff3c08faffaa27faffac27faff062cfaffc437faffc637faffce37faff9e3efaffa642fafff676faffa22afbff2c57fbff2e57fbff8a57fbffea5dfbff0e5ffbff9c70fbff30bafbffb6f2fbffc4f3fbffc6f3fbffb0bdffffb2bdffffe0cbffff96e1ffffecfafffff6faffff00fbffff20fbffff22fbfffff4fffffff8610000026200001662000020620000246200003e620000586200002e0701004c0701007a070100b8070100d6080100da08010026090100560901006409010092350100e63501001636010078410100d4410100f441010006420100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1574,23 +1574,23 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Store
+    - Assets/Dev
     m_Globs: []
     m_OriginalText: 
     m_FilterByTypeIntersection: 0
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scripts/Store
+  - Assets/Dev
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Projetos\Bluegravity\UnityProjectBluegravity
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 113}
-    m_SelectedIDs: ea7d0000
-    m_LastClickedID: 32234
-    m_ExpandedIDs: 00000000186400001c6400001e6400002064000022640000246400002c64000018a2000000ca9a3b
+    scrollPos: {x: 0, y: 79}
+    m_SelectedIDs: 6e400100
+    m_LastClickedID: 82030
+    m_ExpandedIDs: 00000000186400001c6400001e64000020640000226400002464000018a2000020250100aa26010000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1643,24 +1643,24 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 56090100
-    m_LastClickedInstanceID: 67926
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: f4410100
+    m_LastClickedInstanceID: 82420
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: f0fd0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: DevBuildTools
+      m_OriginalName: DevBuildTools
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 82462
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 25}
     m_CreateAssetUtility:
@@ -1698,7 +1698,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 57867
+  controlID: 58444
 --- !u!114 &28
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1757,7 +1757,7 @@ MonoBehaviour:
   m_ObjectsLockedBeforeSerialization: []
   m_InstanceIDsLockedBeforeSerialization: 
   m_PreviewResizer:
-    m_CachedPref: 160
+    m_CachedPref: -160
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
@@ -1846,7 +1846,7 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 1
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 4}
+    scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 0cc50000
     m_LastClickedID: 50444
     m_ExpandedIDs: 00000000186400001c6400001e64000020640000226400002464000018a2000008c5000000ca9a3b
@@ -1902,8 +1902,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 56090100
-    m_LastClickedInstanceID: 67926
+    m_SelectedInstanceIDs: f4410100
+    m_LastClickedInstanceID: 82420
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c62300006c890000
     m_RenameOverlay:

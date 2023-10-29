@@ -20,6 +20,11 @@ namespace Bluegravity.Game.Economy
             CurrencyUpdated(EconomyControll.Instance.Currency);
         }
 
+        private void OnDestroy()
+        {
+            EconomyControll.Instance.RemoveCallback(this);
+        }
+
         public void CurrencyUpdated(float currency)
         {
             _text.text = currency.ToString("00.00");

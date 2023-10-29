@@ -20,10 +20,12 @@ namespace Bluegravity.Game
             _loadCanvas.gameObject.SetActive(false);
         }
 
+        #region UI Methods
         public void GoToMenu()
         {
             _loadCanvas.gameObject.SetActive(true);
             SceneManager.LoadSceneAsync(_menuScene, LoadSceneMode.Single);
-        }
+        } 
+        #endregion
     } 
 }
