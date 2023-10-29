@@ -24,6 +24,7 @@ namespace Bluegravity.Game.Clothes
         private float _price;
         [SerializeField]
         private string _itemName;
+        private Sprite _sprite;
 
         public int Layer { get => _layer; }
         public Texture2D Texture { get => _texture; }
@@ -31,8 +32,12 @@ namespace Bluegravity.Game.Clothes
 
         public Sprite GetIcon()
         {
-            AnimationSprites sprites = new AnimationSprites(_texture, 8, 8);
-            return sprites.GetSprites(PlayerStates.Idle, Vector2.left)[0];
+            if (_sprite == null)
+            {
+                AnimationSprites sprites = new AnimationSprites(_texture, 8, 8);
+                _sprite = sprites.GetSprites(PlayerStates.Idle, Vector2.left)[0];
+            }
+            return _sprite;
         }
 
         public string GetName()

@@ -24,11 +24,6 @@ namespace Bluegravity.Game.Item
             ResetScroll();
         }
 
-        public void ResetScroll()
-        {
-            _scroll.verticalNormalizedPosition = 0;
-        }
-
         public void Clear()
         {
             for (int i = _layout.transform.childCount - 1; i >= 0; i--)
@@ -36,6 +31,19 @@ namespace Bluegravity.Game.Item
                 Destroy(_layout.transform.GetChild(i).gameObject);
             }
         }
+
+
+
+
+        #region UI Methods
+        /// <summary>
+        /// Call by animator
+        /// </summary>
+        public void ResetScroll()
+        {
+            _scroll.verticalNormalizedPosition = 1;
+        } 
+        #endregion
     }
 
 }
