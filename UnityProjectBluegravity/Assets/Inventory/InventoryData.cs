@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Bluegravity.Game.Save
+namespace Bluegravity.Game.Inventory
 {
     [Serializable]
-    public class SaveData
+    public class InventoryData
     {
         [SerializeField]
         private float _gold;
