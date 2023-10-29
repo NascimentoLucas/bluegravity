@@ -34,10 +34,12 @@ namespace Bluegravity.Game.Clothes
     public class StoreSellItem : IPurchaseItem, IViewItem
     {
         private PlayerClotheSO _clothe;
+        private StoreControl _store;
 
-        public StoreSellItem(PlayerClotheSO playerClotheSO)
+        public StoreSellItem(PlayerClotheSO playerClotheSO, StoreControl store)
         {
             _clothe = playerClotheSO;
+            _store = store;
         }
 
         public Sprite GetIcon()
@@ -73,6 +75,7 @@ namespace Bluegravity.Game.Clothes
             {
                 EconomyControll.Instance.AddMoney(_clothe.GetPrice());
                 SaveManager.Instance.RemoveItem(_clothe.Id);
+                _store.SetupInventory();
             }
         }
     }

@@ -46,7 +46,7 @@ namespace Bluegravity.Game.Clothes
             SetupInventory();
         }
 
-        private void SetupInventory()
+        public void SetupInventory()
         {
             List<PlayerClotheSO> inventory = new List<PlayerClotheSO>();
 
@@ -56,7 +56,7 @@ namespace Bluegravity.Game.Clothes
 
             for (int i = 0; i < inventory.Count; i++)
             {
-                StoreSellItem item = new StoreSellItem(inventory[i]);
+                StoreSellItem item = new StoreSellItem(inventory[i], this);
                 _sellPanel.CreateItem(item, item);
             }
 

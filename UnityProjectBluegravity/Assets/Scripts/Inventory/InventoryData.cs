@@ -126,7 +126,6 @@ namespace Bluegravity.Game.Inventory
                 if (PlayerPrefs.HasKey(PrefsKey))
                 {
                     string json = PlayerPrefs.GetString(PrefsKey);
-                    Debug.Log(json);
                     Root r = JsonConvert.DeserializeObject<Root>(json);
 
                     InventoryData data = new InventoryData();
@@ -153,7 +152,6 @@ namespace Bluegravity.Game.Inventory
             Root r = new Root(data._gold, data._itens);
 
             string json = JsonConvert.SerializeObject(r, Formatting.Indented);
-            Debug.Log(json);
             PlayerPrefs.SetString(PrefsKey, json);
         }
     }
