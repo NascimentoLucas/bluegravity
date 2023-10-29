@@ -36,8 +36,14 @@ namespace Bluegravity.Game.Clothes
             _showStoreButton.gameObject.SetActive(false);
             for (int i = 0; i < _clothes.Length; i++)
             {
-                StoreItem item = new StoreItem(_clothes[i]);
+                StoreBuyItem item = new StoreBuyItem(_clothes[i]);
                 _buyPanel.CreateItem(item, _clothes[i]);
+            }
+
+            for (int i = 0; i < 0; i++)
+            {
+                StoreSellItem item = new StoreSellItem(_clothes[i]);
+                _sellPanel.CreateItem(item, _clothes[i]);
             }
         }
 

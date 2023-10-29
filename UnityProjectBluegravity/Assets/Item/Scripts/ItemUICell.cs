@@ -33,7 +33,7 @@ namespace Bluegravity.Game.Item
         #region UI Methods
         public void OnButtonPress()
         {
-            _handle?.OnBuyPressed();
+            _handle?.OnPressed();
         }
         #endregion
     }

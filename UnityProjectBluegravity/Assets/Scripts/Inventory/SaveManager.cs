@@ -1,5 +1,7 @@
 using Bluegravity.Game.Economy;
+using Bluegravity.Game.Inventory;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Bluegravity.Game.Save
 {
@@ -8,8 +10,7 @@ namespace Bluegravity.Game.Save
     {
         public static SaveManager Instance;
 
-        [SerializeField]
-        SaveData _data;
+        InventoryData _data;
 
         private void Awake()
         {
@@ -18,7 +19,7 @@ namespace Bluegravity.Game.Save
                 Instance = this;
                 transform.parent = null;
                 DontDestroyOnLoad(gameObject);
-                _data = new SaveData();
+                _data = new InventoryData();
             }
             else
             {
@@ -49,6 +50,11 @@ namespace Bluegravity.Game.Save
         public void CurrencyUpdated(float currency)
         {
             _data.SetGold(currency);
+        }
+
+        public void IterateItens(UnityAction<InventoryItem> action)
+        {
+            _data.IterateItens(action);
         }
     }
 

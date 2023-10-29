@@ -13,8 +13,7 @@ namespace Bluegravity.Game.Item
 
     public interface IPurchaseItem
     {
-        void OnBuyPressed();
-        void OnSellPressed();
+        void OnPressed();
         bool IsPurchased();
 
     }

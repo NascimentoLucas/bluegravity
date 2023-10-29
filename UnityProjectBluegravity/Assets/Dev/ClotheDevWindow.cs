@@ -9,18 +9,18 @@ using UnityEngine;
 
 namespace Bluegravity.Dev
 {
-    public class ClotheDevWindown : EditorWindow
+    public class ClotheDevWindow : EditorWindow
     {
         private PlayerClotheSO[] _clothes;
         private PlayerClothesBehaviour _clothesBehaviour;
 
         private Vector2 _scrollPos;
 
-        [MenuItem("Bluegravity/Dev/" + nameof(ClotheDevWindown))]
+        [MenuItem("Bluegravity/Dev/" + nameof(ClotheDevWindow))]
         public static new void Show()
         {
-            ClotheDevWindown wnd = GetWindow<ClotheDevWindown>();
-            wnd.titleContent = new GUIContent(nameof(ClotheDevWindown));
+            ClotheDevWindow wnd = GetWindow<ClotheDevWindow>();
+            wnd.titleContent = new GUIContent(nameof(ClotheDevWindow));
         }
 
         private void OnGUI()

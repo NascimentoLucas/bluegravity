@@ -5,11 +5,11 @@ using Bluegravity.Game.Save;
 
 namespace Bluegravity.Game.Clothes
 {
-    public class StoreItem : IPurchaseItem
+    public class StoreBuyItem : IPurchaseItem
     {
         private PlayerClotheSO _clothe;
 
-        public StoreItem(PlayerClotheSO playerClotheSO)
+        public StoreBuyItem(PlayerClotheSO playerClotheSO)
         {
             _clothe = playerClotheSO;
         }
@@ -19,7 +19,7 @@ namespace Bluegravity.Game.Clothes
             return SaveManager.Instance.IsPurchased(_clothe.Id);
         }
 
-        public void OnBuyPressed()
+        public void OnPressed()
         {
             if (EconomyControll.Instance.SpendMoney(_clothe.GetPrice()))
             {
@@ -27,13 +27,29 @@ namespace Bluegravity.Game.Clothes
                 PlayerBehaviour.Instance.WearClothe(_clothe);
             }
         }
+    }
 
-        public void OnSellPressed()
+
+    public class StoreSellItem : IPurchaseItem
+    {
+        private PlayerClotheSO _clothe;
+
+        public StoreSellItem(PlayerClotheSO playerClotheSO)
         {
-            if (IsPurchased())
+            _clothe = playerClotheSO;
+        }
+
+        public bool IsPurchased()
+        {
+            return SaveManager.Instance.IsPurchased(_clothe.Id);
+        }
+
+        public void OnPressed()
+        {
+            if (SaveManager.Instance.IsPurchased(_clothe.Id))
             {
-                SaveManager.Instance.RemoveItem(_clothe.Id);
                 EconomyControll.Instance.AddMoney(_clothe.GetPrice());
+                SaveManager.Instance.RemoveItem(_clothe.Id);
             }
         }
     }
