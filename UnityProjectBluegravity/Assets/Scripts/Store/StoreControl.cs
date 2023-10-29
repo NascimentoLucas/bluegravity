@@ -5,51 +5,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using Bluegravity.Game.Player;
 using UnityEngine.UI;
-using Bluegravity.Game.Economy;
 
 namespace Bluegravity.Game.Clothes
 {
-    public class StoreItem : IPurchaseItem
-    {
-        private PlayerClotheSO _clothe;
-
-        public StoreItem(PlayerClotheSO playerClotheSO)
-        {
-            _clothe = playerClotheSO;
-        }
-
-        public bool IsPurchased()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void OnBuyPressed()
-        {
-            if (EconomyControll.Instance.SpendMoney(_clothe.GetPrice()))
-            {
-                PlayerBehaviour.Instance.WearClothe(_clothe);
-            }
-        }
-
-        public void OnSellPressed()
-        {
-            if (IsPurchased())
-            {
-                EconomyControll.Instance.AddMoney(_clothe.GetPrice());
-            }
-        }
-    }
 
     public class StoreControl : MonoBehaviour
     {
         private const string ShowKey = "Show";
+
         [Header("Setup")]
-        [SerializeField]
-        private ItensPanel _view;
         [SerializeField]
         private Animator _animator;
         [SerializeField]
         private Button _showStoreButton;
+
+        [Header("Setup.Panel")]
+        [SerializeField]
+        private ItensPanel _buyPanel;
+        [SerializeField]
+        private ItensPanel _sellPanel;
 
         [Header("GD")]
         [SerializeField]
@@ -63,7 +37,7 @@ namespace Bluegravity.Game.Clothes
             for (int i = 0; i < _clothes.Length; i++)
             {
                 StoreItem item = new StoreItem(_clothes[i]);
-                _view.CreateItem(item, _clothes[i]);
+                _buyPanel.CreateItem(item, _clothes[i]);
             }
         }
 
