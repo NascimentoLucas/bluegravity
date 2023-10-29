@@ -1,0 +1,17 @@
+{
+    "name": "Bluegravity.Game.Player.Clothes",
+    "rootNamespace": "",
+    "references": [
+        "GUID:cf1519f185e6cff4787d7208b772ef25",
+        "GUID:6c990b49433ad68489fac88fd2462448"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -17,7 +17,7 @@ namespace Bluegravity.Game.Player.Movement
     {
         [Header("Setup")]
         [SerializeField]
-        private Transform _playerTrans;
+        private Rigidbody2D _playerBody;
         IMovementControls _controls;
 
         private Vector2 _delta;
@@ -30,14 +30,15 @@ namespace Bluegravity.Game.Player.Movement
 
         private void Awake()
         {
-            enabled= _controls != null;
+            enabled = _controls != null;
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             _delta = _controls.GetMovement();
-            _delta *= _speed * Time.deltaTime;
-            _playerTrans.position += new Vector3(_delta.x, _delta.y);
+            _delta *= _speed;
+            _playerBody.velocity = Vector2.zero;
+            _playerBody.AddForce(_delta);
         }
 
         public void SetControl(IMovementControls controls)
