@@ -17,11 +17,9 @@ namespace Bluegravity.Game.Clothes
         [SerializeField]
         private Texture2D _texture;
 
+        [Header("Setup.Item")]
         [SerializeField]
         private string _id;
-
-
-        [Header("Setup.Item")]
         [SerializeField]
         private float _price;
         [SerializeField]

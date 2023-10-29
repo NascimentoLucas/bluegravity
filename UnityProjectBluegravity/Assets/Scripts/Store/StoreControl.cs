@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Bluegravity.Game.Player;
 using UnityEngine.UI;
+using Bluegravity.Game.Save;
+using Bluegravity.Game.Inventory;
+using System;
 
 namespace Bluegravity.Game.Clothes
 {
@@ -40,10 +43,31 @@ namespace Bluegravity.Game.Clothes
                 _buyPanel.CreateItem(item, _clothes[i]);
             }
 
-            for (int i = 0; i < 0; i++)
+            SetupInventory();
+        }
+
+        private void SetupInventory()
+        {
+            List<PlayerClotheSO> inventory = new List<PlayerClotheSO>();
+
+            SaveManager.Instance.IterateItens(GetClothe);
+
+            for (int i = 0; i < inventory.Count; i++)
             {
-                StoreSellItem item = new StoreSellItem(_clothes[i]);
-                _sellPanel.CreateItem(item, _clothes[i]);
+                StoreSellItem item = new StoreSellItem(inventory[i]);
+                _sellPanel.CreateItem(item, item);
+            }
+
+            void GetClothe(InventoryItem item)
+            {
+                for (int i = 0; i < _clothes.Length; i++)
+                {
+                    if (_clothes[i].Id.Equals(item.Id))
+                    {
+                        inventory.Add(_clothes[i]);
+                        return;
+                    }
+                }
             }
         }
 
@@ -69,8 +93,14 @@ namespace Bluegravity.Game.Clothes
         #region UI Methods
         public void ShowView(bool value)
         {
+            if (value)
+            {
+                SetupInventory();
+            }
+
             _animator.SetBool(ShowKey, value);
             _showStoreButton.gameObject.SetActive(!value);
+
         }
         #endregion
     }

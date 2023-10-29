@@ -2,6 +2,7 @@
 using Bluegravity.Game.Player;
 using Bluegravity.Game.Economy;
 using Bluegravity.Game.Save;
+using UnityEngine;
 
 namespace Bluegravity.Game.Clothes
 {
@@ -30,13 +31,35 @@ namespace Bluegravity.Game.Clothes
     }
 
 
-    public class StoreSellItem : IPurchaseItem
+    public class StoreSellItem : IPurchaseItem, IViewItem
     {
         private PlayerClotheSO _clothe;
 
         public StoreSellItem(PlayerClotheSO playerClotheSO)
         {
             _clothe = playerClotheSO;
+        }
+
+        public Sprite GetIcon()
+        {
+            return _clothe.GetIcon();
+        }
+
+        public string GetName()
+        {
+            if (IsPurchased())
+            {
+                return _clothe.GetName();
+            }
+            else
+            {
+                return "Sold out";
+            }
+        }
+
+        public float GetPrice()
+        {
+            return _clothe.GetPrice();
         }
 
         public bool IsPurchased()
@@ -46,7 +69,7 @@ namespace Bluegravity.Game.Clothes
 
         public void OnPressed()
         {
-            if (SaveManager.Instance.IsPurchased(_clothe.Id))
+            if (IsPurchased())
             {
                 EconomyControll.Instance.AddMoney(_clothe.GetPrice());
                 SaveManager.Instance.RemoveItem(_clothe.Id);

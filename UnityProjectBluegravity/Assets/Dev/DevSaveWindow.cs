@@ -27,17 +27,18 @@ namespace Bluegravity.Dev
 
         private void OnGUI()
         {
+            if (!EditorApplication.isPlaying)
+            {
+                GUILayout.Label("Is not playing");
+                return;
+            }
+
             _scrollPos =
                 EditorGUILayout.BeginScrollView(_scrollPos, GUILayout.Width(Screen.width),
                 GUILayout.Height(Screen.height));
 
             try
             {
-                if (!EditorApplication.isPlaying)
-                {
-                    GUILayout.Label("Is not playing");
-                    return;
-                }
 
                 if (SaveManager.Instance == null) return;
 

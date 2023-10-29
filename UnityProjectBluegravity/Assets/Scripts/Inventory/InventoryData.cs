@@ -58,7 +58,7 @@ namespace Bluegravity.Game.Inventory
             if (Contains(id))
             {
                 _itens[id].Add(-1);
-                if (_itens[id].Quantity < 0)
+                if (_itens[id].Quantity < 1)
                     _itens.Remove(id);
             }
         }
