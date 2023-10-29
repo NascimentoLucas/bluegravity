@@ -11,8 +11,11 @@ namespace Bluegravity.Game.Item
         Sprite GetIcon();
     }
 
-    public interface IHandleItem
+    public interface IPurchaseItem
     {
-        void ButtonPressed();
+        void OnBuyPressed();
+        void OnSellPressed();
+        bool IsPurchased();
+
     }
 }

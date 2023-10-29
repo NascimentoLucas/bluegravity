@@ -19,9 +19,9 @@ namespace Bluegravity.Game.Item
         [SerializeField]
         private TextMeshProUGUI _priceText;
 
-        private IHandleItem _handle;
+        private IPurchaseItem _handle;
 
-        public void Setup(IHandleItem handle, IViewItem view)
+        public void Setup(IPurchaseItem handle, IViewItem view)
         {
             _handle = handle;
 
@@ -33,7 +33,7 @@ namespace Bluegravity.Game.Item
         #region UI Methods
         public void OnButtonPress()
         {
-            _handle?.ButtonPressed();
+            _handle?.OnBuyPressed();
         }
         #endregion
     }

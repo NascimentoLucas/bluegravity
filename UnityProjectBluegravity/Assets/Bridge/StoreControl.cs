@@ -9,7 +9,7 @@ using Bluegravity.Game.Economy;
 
 namespace Bluegravity.Game.Clothes
 {
-    public class StoreItem : IHandleItem
+    public class StoreItem : IPurchaseItem
     {
         private PlayerClotheSO _clothe;
 
@@ -18,11 +18,24 @@ namespace Bluegravity.Game.Clothes
             _clothe = playerClotheSO;
         }
 
-        public void ButtonPressed()
+        public bool IsPurchased()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void OnBuyPressed()
         {
             if (EconomyControll.Instance.SpendMoney(_clothe.GetPrice()))
             {
                 PlayerBehaviour.Instance.WearClothe(_clothe);
+            }
+        }
+
+        public void OnSellPressed()
+        {
+            if (IsPurchased())
+            {
+                EconomyControll.Instance.AddMoney(_clothe.GetPrice());
             }
         }
     }

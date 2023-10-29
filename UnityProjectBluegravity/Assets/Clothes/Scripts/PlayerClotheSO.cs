@@ -1,4 +1,7 @@
-﻿using Bluegravity.Game.Item;
+﻿#if UNITY_EDITOR
+using NaughtyAttributes;
+# endif
+using Bluegravity.Game.Item;
 using UnityEngine;
 using Bluegravity.Game.Player.Animation;
 
@@ -14,6 +17,9 @@ namespace Bluegravity.Game.Clothes
         [SerializeField]
         private Texture2D _texture;
 
+        [SerializeField]
+        private string _id;
+
 
         [Header("Setup.Item")]
         [SerializeField]
@@ -23,6 +29,7 @@ namespace Bluegravity.Game.Clothes
 
         public int Layer { get => _layer; }
         public Texture2D Texture { get => _texture; }
+        public string Id { get => _id; }
 
         public Sprite GetIcon()
         {
@@ -39,6 +46,15 @@ namespace Bluegravity.Game.Clothes
         {
             return _price;
         }
+
+#if UNITY_EDITOR
+        [Button]
+        public void SetId()
+        {
+            _id = $"Bluegravity.Item.clothe." + _texture.name;
+            UnityEditor.EditorUtility.SetDirty(this);
+        }
+#endif
     }
 
 }

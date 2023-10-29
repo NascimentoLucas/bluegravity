@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _layer: 4
   _texture: {fileID: 2800000, guid: 17ab00e3c0fde2249a11a7ffc9ce5d3c, type: 3}
+  _id: Bluegravity.Item.clothe.char_a_p1_5hat_pnty_v04
   _price: 60
-  _icon: {fileID: 0}
   _itemName: 

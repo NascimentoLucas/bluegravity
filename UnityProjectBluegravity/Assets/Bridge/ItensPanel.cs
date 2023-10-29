@@ -17,7 +17,7 @@ namespace Bluegravity.Game.Item
         [SerializeField]
         private ScrollRect _scroll;
 
-        public void CreateItem(IHandleItem handle, IViewItem view)
+        public void CreateItem(IPurchaseItem handle, IViewItem view)
         {
             ItemUICell cell = Instantiate(_cellPrefab, _layout.transform);
             cell.Setup(handle, view);
