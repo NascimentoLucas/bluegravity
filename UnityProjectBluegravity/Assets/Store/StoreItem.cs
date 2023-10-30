@@ -77,8 +77,8 @@ namespace Bluegravity.Game.Clothes
         {
             if (IsPurchased())
             {
-                EconomyControll.Instance.AddMoney(_clothe.GetPrice());
                 SaveManager.Instance.RemoveItem(_clothe.Id);
+                EconomyControll.Instance.AddMoney(_clothe.GetPrice());
             }
             _store.SetupInventory();
         }

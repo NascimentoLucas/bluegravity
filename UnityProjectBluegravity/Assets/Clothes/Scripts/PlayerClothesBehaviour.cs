@@ -56,6 +56,19 @@ namespace Bluegravity.Game.Clothes
 
             _renderers[so.Layer - 1].SetClothe(so, _animation.Collum, _animation.Row);
         }
+
+        public void IterateClothes(Action<ClotheRender> check)
+        {
+            for (int i = 0; i < _renderers.Length; i++)
+            {
+                if (_renderers[i] == null)
+                {
+                    continue;
+                }
+
+                check.Invoke(_renderers[i]);
+            }
+        }
     }
 
 }

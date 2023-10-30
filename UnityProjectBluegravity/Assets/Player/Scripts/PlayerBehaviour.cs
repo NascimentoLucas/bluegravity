@@ -6,10 +6,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Bluegravity.Game.Economy;
+using Bluegravity.Game.Save;
 
 namespace Bluegravity.Game.Player
 {
-    public class PlayerBehaviour : MonoBehaviour, IMovementControls, IAnimationHandler
+    public class PlayerBehaviour : MonoBehaviour, IMovementControls, IAnimationHandler, ICurrencyCallback
     {
         public static PlayerBehaviour Instance { get; private set; }
 
@@ -33,6 +35,7 @@ namespace Bluegravity.Game.Player
         {
             _movement.SetControl(this);
             _animation.SetAnimationHandler(this);
+            EconomyControll.Instance.AddCallback(this);
         }
 
         private void OnEnable()
@@ -42,6 +45,11 @@ namespace Bluegravity.Game.Player
                 _inputActions = new PlayerInputBehaviour();
             }
             _inputActions.Default.Enable();
+        }
+
+        private void OnDestroy()
+        {
+            EconomyControll.Instance.RemoveCallback(this);
         }
 
         private void Update()
@@ -69,6 +77,21 @@ namespace Bluegravity.Game.Player
         internal void WearClothe(PlayerClotheSO clothe)
         {
             _clothes.SetClothe(clothe);
+        }
+
+        public void CurrencyUpdated(float currency)
+        {
+            _clothes.IterateClothes(Check);
+
+            void Check(ClotheRender clotheRen)
+            {
+                if (clotheRen.So == null) return;
+
+                if (!SaveManager.Instance.IsPurchased(clotheRen.So.Id))
+                {
+                    clotheRen.RemoveClothe();
+                }
+            }
         }
 
         internal void MoveTo(Vector3 position)

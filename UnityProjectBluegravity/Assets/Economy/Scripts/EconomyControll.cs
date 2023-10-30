@@ -84,7 +84,7 @@ namespace Bluegravity.Game.Economy
             _currencyChanges.Add(callback);
         }
 
-        internal void RemoveCallback(ICurrencyCallback callback)
+        public void RemoveCallback(ICurrencyCallback callback)
         {
             _currencyChanges.Remove(callback);
         }
