@@ -26,6 +26,7 @@ namespace Bluegravity.Game.Clothes
             {
                 GameObject obj = new GameObject($"{nameof(ClotheRender)}.{i + 1}");
                 obj.transform.parent = transform;
+                obj.transform.localScale = transform.localScale;
                 if (transform.parent != null)
                 {
                     obj.transform.position = transform.parent.position;
